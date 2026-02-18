@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti - Demis Lupi</title>
+<meta name="description" content="Contatti Demis Lupi artista - info@demislupi.it | Instagram @demislupiart | Form messaggio diretto">
+<meta name="keywords" content="Demis Lupi contatti, artista Milano, pittore Brera, info demislupi">
+<meta name="author" content="Demis Lupi">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Demis Lupi - Contatti">
+<meta property="og:description" content="info@demislupi.it | Instagram @demislupiart | Form contatto diretto">
+<meta property="og:image" content="immagini/bio/Demis.jpg">
+<meta property="og:url" content="https://demislupi.it/contatti.html">
+<link rel="canonical" href="https://demislupi.it/contatti.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* CONTENUTO - ALZATO ULTERIORMENTE */
+.contatti-container {
+    max-width: 700px;
+    margin: 160px auto 40px;
+    padding: 10px 20px 40px;
+    text-align: center;
+}
+
+/* LINK CONTATTI */
+.contatto {
+    margin: 25px 0;
+    font-size: 20px;
+}
+
+.contatto a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding-bottom: 3px;
+    transition: 0.3s;
+}
+
+.contatto a:hover {
+    opacity: 0.6;
+}
+
+/* FORM CONTATTO */
+.form-contatto {
+    background: white;
+    padding: 35px;
+    margin: 30px auto;
+    max-width: 600px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.form-contatto h2 {
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-contatto input,
+.form-contatto textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-contatto textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-contatto button {
+    width: 100%;
+    background: black;
+    color: white;
+    border: none;
+    padding: 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.form-contatto button:hover {
+    opacity: 0.8;
+}
+
+/* FOOTER */
+footer p {
+    text-align: center !important;
+    padding: 2px 20px !important;
+    margin: 0 !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contatti-container {
+        margin: 60px auto 30px;
+        padding: 10px 15px 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="galleria.html">Opere</a>
+    <a href="bio.html">Bio</a>
+    <a href="contatti.html">Contatti</a>
+</nav>
+
+<main class="contatti-container">
+    <div class="contatto">
+        Email:<br>
+        <a href="mailto:info@demislupi.it">info@demislupi.it</a>
+    </div>
+    
+  <div class="contatto">
+    Instagram:<br>
+    <a href="https://instagram.com/demislupiart" target="_blank">@demislupiart</a>
+</div>
+
+
+    <div class="form-contatto">
+        <h2>Oppure scrivimi direttamente</h2>
+        <form action="mailto:info@demislupi.it" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Il tuo nome" required>
+            <input type="email" name="email" placeholder="La tua email" required>
+            <textarea name="message" placeholder="Il tuo messaggio..." rows="6" required></textarea>
+            <button type="submit">Invia messaggio</button>
+        </form>
+    </div>
+</main>
+
+<footer style="text-align:center;padding:80px 20px 60px;font-size:14px;color:#666;letter-spacing:1px;user-select:none;pointer-events:none;background:white;">
+    © 2026 Demis Lupi - Tutti i diritti riservati
+</footer>
+</body>
+</html>

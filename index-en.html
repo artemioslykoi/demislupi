@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demis Lupi</title>
+<meta name="description" content="Demis Lupi - Contemporary artist trained at Brera Academy of Fine Arts Milan. Oil painting on canvas and panel, color as vital energy archetypal universal spiritual.">
+<meta name="keywords" content="Demis Lupi, contemporary artist, Brera Academy Milan, oil painting, color energy, Italian art, Milan exhibitions, Brand New Talent">
+<meta name="author" content="Demis Lupi">
+<meta name="robots" content="index, follow">
+<!-- Open Graph -->
+<meta property="og:title" content="Demis Lupi - Contemporary Artist">
+<meta property="og:description" content="Oil painting on canvas and panel - Brera Academy Milan. Color as vital energy">
+<meta property="og:image" content="immagini/quadri/portale.jpg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1800">
+<meta property="og:url" content="https://demislupi.it/index-en.html">
+<meta property="og:type" content="website">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Demis Lupi - Contemporary Painting">
+<meta name="twitter:description" content="Brera Academy Milan - Oil on canvas and panel">
+<meta name="twitter:image" content="immagini/quadri/portale.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body.home {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    overflow-x: hidden;
+}
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("immagini/home/sfondo.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+.contenuto {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeIn 2s ease;
+    width: 90%;
+    max-width: 800px;
+}
+.contenuto h1 {
+    font-size: clamp(28px, 8vw, 70px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0 0 20px 0;
+    color: white;
+    line-height: 1.1;
+}
+.home .menu {
+    position: relative;
+    z-index: 3;
+    background: transparent;
+    padding: 15px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.home .menu a {
+    color: white;
+    font-size: clamp(14px, 4vw, 22px);
+    text-decoration: none;
+    margin: 0 15px;
+    display: inline-block;
+}
+.frase {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    font-size: clamp(16px, 4vw, 22px);
+    font-style: italic;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    padding: 0 20px;
+    margin-top: 10px;
+    line-height: 1.3;
+    opacity: 0;
+    animation: fadeIn 2s ease 1s forwards;
+}
+
+/* LANDSCAPE MOBILE */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    padding-top: 60px !important;
+    justify-content: flex-start !important;
+  }
+  .contenuto h1 {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+    max-height: 32px !important;
+    overflow: hidden !important;
+  }
+  .home .menu {
+    padding: 8px 0 !important;
+    margin-bottom: 5px !important;
+  }
+  .home .menu a {
+    font-size: 12px !important;
+    margin: 0 8px !important;
+  }
+  .frase {
+    font-size: 13px !important;
+    margin-top: 5px !important;
+    max-height: 22px !important;
+    overflow: hidden !important;
+    animation-delay: 0.5s !important;
+  }
+}
+
+/* MOBILE PORTRAIT PICCOLO */
+@media (max-width: 480px) {
+  .hero { padding-top: 70px; }
+  .contenuto h1 { letter-spacing: 1px; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body class="home">
+<section class="hero">
+    <div class="contenuto">
+        <h1>Demis Lupi</h1>
+        <nav class="menu">
+            <a href="index-en.html">Home</a>
+            <a href="galleria-en.html">Works</a>
+            <a href="bio-en.html">Bio</a>
+            <a href="contatti-en.html">Contacts</a>
+            <a href="index.html">IT</a>
+        </nav>
+    </div>
+    <div class="frase">"The time we spend imagining often exceeds that needed to create."</div>
+</section>
+</body>
+</html>

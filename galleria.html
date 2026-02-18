@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opere - Demis Lupi</title>
+<meta name="description" content="Demis Lupi - Portale, olio su tavola di legno 180×180 cm. Opera monumentale recente, colore come energia vitale che segna i punti cardinali dell'essere.">
+<meta name="keywords" content="Demis Lupi, Portale, olio su tavola legno, 180x180 cm, arte contemporanea Milano, pittura astratta, colore energia, Accademia Brera">
+<meta name="author" content="Demis Lupi">
+<meta property="og:title" content="Demis Lupi - Portale | Olio su tavola 180×180 cm">
+<meta property="og:description" content="Opera monumentale recente - colore come energia vitale. Accademia di Brera Milano">
+<meta property="og:image" content="immagini/quadri/portale.jpg">
+<meta property="og:url" content="https://demislupi.it/galleria.html">
+<link rel="canonical" href="https://demislupi.it/galleria.html">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.opera-principale { 
+    max-width: 1100px; 
+    margin: 0 auto 200px; 
+    padding: 40px 20px; 
+    text-align: center; 
+}
+.opera-principale img { 
+    max-height: 75vh; 
+    max-width: 95%; 
+    cursor: pointer; 
+    transition: transform 0.4s ease-out; 
+    box-shadow: 0 15px 50px rgba(0,0,0,0.25); 
+}
+.opera-principale img:hover { transform: scale(1.02); }
+.titolo-portale {
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: #333;
+}
+.sottotitolo {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* BOTTONE FISSO BASSO DESTRA */
+.navigazione {
+    position: fixed;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 30px;
+    pointer-events: none;
+    z-index: 100;
+}
+.prosegui-link {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #333;
+    color: #333;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 300;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    pointer-events: all;
+}
+.prosegui-link:hover { background: #333; color: white; }
+
+/* LIGHTBOX CORRETTO CON ZOOM/PAN - ANGOLI SQUADRATI */
+.lightbox-portale {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; transition: opacity 0.4s ease-out; z-index: 9999;
+}
+.lightbox-portale.active { opacity: 1; visibility: visible; }
+
+.lightbox-portale .zoomed-img { 
+    max-width: 90vw; max-height: 90vh; width: auto; height: auto;
+    object-fit: contain; cursor: zoom-in; transition: transform 0.3s ease;
+    box-shadow: 0 0 60px rgba(0,0,0,0.9); /* ANGOLI SQUADRATI - RIMUOVO border-radius */
+    user-select: none;
+}
+.lightbox-portale.zoom-mode .zoomed-img { cursor: grab; }
+.lightbox-portale.zoom-mode .zoomed-img:active { cursor: grabbing; }
+
+.zoom-icon {
+    position: absolute; top: 20px; right: 60px; font-size: 28px; color: white;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); border-radius: 50%;
+    width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s, transform 0.3s; cursor: pointer; z-index: 10002;
+}
+.lightbox-portale:hover .zoom-icon { opacity: 1; transform: scale(1); }
+.zoom-icon:active { transform: scale(0.95); }
+
+.nav-lightbox {
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10001;
+    padding: 15px;
+    transition: 0.3s;
+    user-select: none;
+}
+.nav-lightbox:hover { color: #ccc; }
+.prev-lightbox { left: 30px; top: 50%; transform: translateY(-50%); }
+.next-lightbox { right: 30px; top: 50%; transform: translateY(-50%); }
+.chiudi-lightbox {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    z-index: 10000;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+.chiudi-lightbox:hover { color: #ccc; }
+
+.info-lightbox {
+    position: absolute;
+    top: 100px;
+    right: 60px;
+    color: white;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(15px);
+    padding: 20px 25px;
+    border-radius: 8px;
+    max-width: 220px;
+    z-index: 10001;
+    font-family: 'Playfair Display', serif;
+}
+.titolo-lightbox {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.tecnica-lightbox {
+    font-size: 14px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .navigazione { bottom: 100px; padding: 0 20px; }
+    .prosegui-link { padding: 12px 30px; font-size: 16px; }
+    .opera-principale img { max-height: 60vh; }
+    .titolo-portale { font-size: 24px; }
+    .chiudi-lightbox { top: 20px; right: 20px; font-size: 32px; }
+    .zoom-icon { top: 15px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
+    .info-lightbox { right: 20px; top: 80px; left: 20px; max-width: none; }
+}
+</style>
+</head>
+
+<body>
+<nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="galleria.html">Opere</a>
+    <a href="bio.html">Bio</a>
+    <a href="contatti.html">Contatti</a>
+</nav>
+
+<main>
+<section class="opera-principale">
+    <img id="portaleImg" src="immagini/quadri/portale.jpg" onclick="apriPortale()" alt="Portale">
+    <h1 class="titolo-portale">Portale</h1>
+    <p class="sottotitolo">Olio su tavola di legno, 180×180 cm</p>
+</section>
+</main>
+
+<!-- BOTTONE PROSEGUI FISSO -->
+<div class="navigazione">
+    <a href="galleria-completa.html" class="prosegui-link">Prosegui nella galleria</a>
+</div>
+
+<!-- LIGHTBOX CON ZOOM/PAN -->
+<div class="lightbox-portale" id="lightboxPortale" onclick="chiudiPortale(event)">
+    <span class="chiudi-lightbox" onclick="chiudiPortale(event)">×</span>
+    <div class="zoom-icon" onclick="toggleZoom(event)">🔍</div>
+    <span class="nav-lightbox prev-lightbox" onclick="cambiaPortale(-1)">‹</span>
+    <img id="lightboxImg" class="zoomed-img" src="immagini/quadri/portale.jpg" alt="Portale">
+    <span class="nav-lightbox next-lightbox" onclick="cambiaPortale(1)">›</span>
+    
+    <!-- INFO -->
+    <div class="info-lightbox">
+        <div class="titolo-lightbox">Portale</div>
+        <div class="tecnica-lightbox">Olio su tavola di legno, 180×180 cm</div>
+    </div>
+</div>
+
+<script>
+const portaleImages = ["immagini/quadri/portale.jpg", "immagini/quadri/portale2.jpg"];
+const titoli = ["Portale", "Portale"];
+const tecniche = ["Olio su tavola di legno, 180×180 cm", "Olio su tavola di legno, 180×180 cm"];
+let portaleIndex = 0;
+let scale = 1, translateX = 0, translateY = 0, isDragging = false, startX, startY;
+
+function apriPortale() {
+    document.getElementById('lightboxPortale').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    resetZoom();
+    document.getElementById('lightboxImg').src = portaleImages[0];
+    document.querySelector('.titolo-lightbox').textContent = titoli[0];
+    document.querySelector('.tecnica-lightbox').textContent = tecniche[0];
+    portaleIndex = 0;
+}
+
+function chiudiPortale(event) {
+    if (event.target.id === 'lightboxPortale' || event.target.classList.contains('chiudi-lightbox')) {
+        document.getElementById('lightboxPortale').classList.remove('active');
+        document.body.style.overflow = '';
+        resetZoom();
+    }
+}
+
+function cambiaPortale(direction) {
+    portaleIndex += direction;
+    if (portaleIndex < 0) portaleIndex = portaleImages.length - 1;
+    if (portaleIndex >= portaleImages.length) portaleIndex = 0;
+    document.getElementById('lightboxImg').src = portaleImages[portaleIndex];
+    document.querySelector('.titolo-lightbox').textContent = titoli[portaleIndex];
+    document.querySelector('.tecnica-lightbox').textContent = tecniche[portaleIndex];
+    resetZoom();
+}
+
+function resetZoom() {
+    scale = 1; translateX = 0; translateY = 0;
+    const img = document.getElementById('lightboxImg');
+    img.style.transform = 'scale(1) translate(0px, 0px)';
+    document.getElementById('lightboxPortale').classList.remove('zoom-mode');
+}
+
+function toggleZoom(event) {
+    event.stopPropagation();
+    const lightbox = document.getElementById('lightboxPortale');
+    if (scale < 1.5) {
+        scale = 2; lightbox.classList.add('zoom-mode');
+    } else {
+        resetZoom();
+    }
+    document.getElementById('lightboxImg').style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+}
+
+// ZOOM CON ROTELLA
+document.addEventListener('DOMContentLoaded', function() {
+    const img = document.getElementById('lightboxImg');
+    img.addEventListener('wheel', function(e) {
+        if (!document.getElementById('lightboxPortale').classList.contains('active')) return;
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? 0.9 : 1.1;
+        const newScale = Math.min(Math.max(scale * delta, 1), 5);
+        if (newScale !== scale) {
+            scale = newScale;
+            document.getElementById('lightboxPortale').classList.toggle('zoom-mode', scale > 1);
+            img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        }
+    });
+
+    // PAN CON DRAG
+    img.addEventListener('mousedown', function(e) {
+        if (scale <= 1 || !document.getElementById('lightboxPortale').classList.contains('active')) return;
+        isDragging = true; 
+        startX = e.clientX - translateX; 
+        startY = e.clientY - translateY;
+        img.style.transition = 'none';
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        translateX = e.clientX - startX; 
+        translateY = e.clientY - startY;
+        img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false; 
+        img.style.transition = 'transform 0.3s ease';
+    });
+});
+
+// TASTI
+document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightboxPortale').classList.contains('active')) return;
+    if (e.key === 'Escape') chiudiPortale({target: {id: 'lightboxPortale'}});
+    if (e.key === 'ArrowLeft') cambiaPortale(-1);
+    if (e.key === 'ArrowRight') cambiaPortale(1);
+});
+
+// ANTI-INSPEZIONA
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => { 
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault(); 
+});
+</script>
+
+<footer style="text-align:center;padding:80px 20px 60px;font-size:14px;color:#666;letter-spacing:1px;user-select:none;pointer-events:none;background:white;">
+    © 2026 Demis Lupi - Tutti i diritti riservati
+</footer>
+</body>
+</html>

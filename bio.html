@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio - Demis Lupi</title>
+<meta name="description" content="Demis Lupi artista formato all'Accademia di Belle Arti Brera Milano con Alberto Garutti. Pittura che integra analogico-digitale, colore come energia vitale archetipo universale.">
+<meta name="keywords" content="Demis Lupi biografia, Accademia Brera, Alberto Garutti, arte contemporanea Milano, pittura digitale analogica, colore energia spirituale">
+<meta name="author" content="Demis Lupi">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Demis Lupi - Biografia Artistica">
+<meta property="og:description" content="Formazione Accademia Brera con Alberto Garutti. Colore come energia vitale">
+<meta property="og:image" content="immagini/bio/Demis.jpg">
+<meta property="og:url" content="https://demislupi.it/bio.html">
+<link rel="canonical" href="https://demislupi.it/galleria.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.bio-container {
+    max-width: 1000px;
+    margin: 160px auto 40px;
+    padding: 40px 20px 40px; 
+    padding-top: 0;
+}
+
+.bio-layout {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.bio-img {
+    flex: 1 1 280px;
+}
+.bio-img img {
+    width: 100%;
+    display: block;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.bio-text {
+    flex: 2 1 420px;
+}
+.bio-text h1 {
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+.bio-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    text-align: justify;
+}
+@media (max-width: 768px) {
+    .bio-layout { flex-direction: column; gap: 30px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="galleria.html">Opere</a>
+    <a href="bio.html">Bio</a>
+    <a href="contatti.html">Contatti</a>
+</nav>
+
+<main class="bio-container">
+    <div class="bio-layout">
+        <div class="bio-img">
+            <img src="immagini/bio/Demis.jpg" alt="Demis Lupi">
+        </div>
+        <div class="bio-text">
+            <h1>Demis Lupi</h1>
+            <p>Artista formatosi presso l'<strong>Accademia di Belle Arti di Brera</strong> a Milano sotto la guida di <strong>Alberto Garutti</strong>, Demis Lupi sviluppa un linguaggio pittorico che integra tecniche tradizionali con strumenti digitali.</p>
+            <p>La sua ricerca artistica esplora il vissuto umano, le sue relazioni e le pieghe più intime del pensiero, attraverso un linguaggio archetipo universale e spirituale. Il <strong>colore</strong> vi assume un ruolo fondamentale, energia vitale che ci identifica e segna i punti cardinali dell'essere, ponte arcano tra il visibile e l'inesprimibile, ancorato all'osservazione diretta.</p>
+            <p>Evita deformazioni formali preferendo tagli fotografici e composizioni studiate, come testimoniato dalle esposizioni <em>Brand New Talent</em> (Palazzina Liberty, Milano 2003), <em>Ecodesign</em> (Brera 2004) e dal film <em>Saveart: Recycling Art</em>.</p>
+            <p>La sperimentazione continua attraverso la pittura e le tecnologie digitali.</p>
+        </div>
+    </div>
+</main>
+
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+});
+</script>
+
+<footer style="text-align:center;padding:80px 20px 60px;font-size:14px;color:#666;letter-spacing:1px;user-select:none;pointer-events:none;background:white;">
+    © 2026 Demis Lupi - Tutti i diritti riservati
+</footer>
+</body>
+</html>

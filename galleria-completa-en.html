@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Gallery - Demis Lupi</title>
+<meta name="description" content="Demis Lupi - Complete gallery oil on canvas. Accademia Brera Milan training, contemporary painting, color-energy research, photographic compositions.">
+<meta name="keywords" content="Demis Lupi, painting gallery, oil on canvas, contemporary art, Accademia Brera, Milan art, Italian painting, figurative abstraction">
+<meta name="author" content="Demis Lupi">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Demis Lupi - Complete Gallery Oil on Canvas">
+<meta property="og:description" content="Complete collection of paintings - Accademia di Brera">
+<meta property="og:image" content="immagini/quadri/oil01.jpg">
+<meta property="og:url" content="https://demislupi.it/galleria-completa-en.html">
+<link rel="canonical" href="https://demislupi.it/galleria-completa-en.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Demis Lupi - Complete Gallery">
+<meta name="twitter:description" content="Oil on canvas from Brera training">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body{ margin:0; background:white; color:black; font-family:'Playfair Display', serif; }
+.galleria{
+    max-width:1200px;
+    margin:160px auto 200px;
+    padding:10px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.galleria img{
+    width:100%;
+    height:auto;
+    display:block;
+    margin:0 auto;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 15px rgba(0,0,0,0.6);
+}
+.galleria img:hover{ transform:scale(1.03); }
+.navigazione {
+    position: fixed;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    pointer-events: none;
+    z-index: 100;
+}
+.torna-indietro {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #333;
+    color: #333;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    pointer-events: all;
+    white-space: nowrap;
+}
+.torna-indietro:hover {
+    background: #333;
+    color: white;
+}
+.lightbox{ 
+    position:fixed; 
+    inset:0; 
+    background:rgba(0,0,0,0.95); 
+    opacity:0; 
+    pointer-events:none; 
+    transition:0.4s; 
+    z-index:9999; 
+}
+.lightbox.active{ 
+    opacity:1; 
+    pointer-events:auto; 
+}
+.nav.close {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    z-index: 10002;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 15px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    transition: 0.3s;
+    line-height: 1;
+}
+.nav.close:hover { background: rgba(0,0,0,0.9); color: #ccc; }
+.lightbox-container {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.lightbox-img-container {
+    flex-shrink: 0;
+    max-width: 75vw;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lightbox img { 
+    max-width:100%; 
+    max-height:90vh; 
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    animation:fade 0.4s; 
+    box-shadow: 0 0 60px rgba(0,0,0,0.9);
+    border-radius: 0;
+}
+.info-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    max-width: 250px;
+    color: white;
+    text-align: left;
+    padding: 30px 25px;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.titolo-lightbox {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+.info-dettaglio {
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+    color: #ddd;
+}
+.nav.prev, .nav.next {
+    position:absolute; 
+    color:white; 
+    font-size:50px; 
+    cursor:pointer; 
+    user-select:none; 
+    padding:20px; 
+    z-index:10001;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    transition: 0.3s;
+    line-height: 1;
+}
+.nav.prev:hover, .nav.next:hover { 
+    background: rgba(0,0,0,0.8); 
+    color: #ccc; 
+}
+.prev{ left:20px; top:50%; transform:translateY(-50%); }
+.next{ right:20px; top:50%; transform:translateY(-50%); }
+@keyframes fade{ from{opacity:0; transform:scale(0.9);} to{opacity:1; transform:scale(1);} }
+
+@media (max-width: 768px) {
+    .lightbox-container { 
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    .lightbox-img-container { 
+        max-width: 95vw; 
+        max-height: 70vh;
+    }
+    .info-lightbox {
+        position: static !important;
+        top: auto !important;
+        right: auto !important;
+        max-width: 90vw;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .titolo-lightbox { font-size: 26px; }
+    .info-dettaglio { font-size: 15px; }
+    .navigazione {
+        bottom: 100px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 20px;
+        align-items: center;
+    }
+    .torna-indietro {
+        padding: 12px 30px !important;
+        font-size: 16px !important;
+        min-width: 220px;
+    }
+    .nav.prev, .nav.next { font-size: 40px; padding: 15px; }
+    .nav.close { top: 20px; right: 20px; font-size: 32px; }
+}
+</style>
+</head>
+
+<body>
+<nav class="menu">
+    <a href="index-en.html">Home</a>
+    <a href="galleria-en.html">Works</a>
+    <a href="bio-en.html">Bio</a>
+    <a href="contatti-en.html">Contacts</a>
+</nav>
+
+<div class="galleria">
+<img src="immagini/quadri/oil01.jpg" onclick="apri(0)" alt="Respiro">
+<img src="immagini/quadri/oil02.jpg" onclick="apri(1)" alt="Senza Titolo">
+<img src="immagini/quadri/oil03.jpg" onclick="apri(2)" alt="Virus">
+<img src="immagini/quadri/oil04.jpg" onclick="apri(3)" alt="Tommy">
+<img src="immagini/quadri/oil05.jpg" onclick="apri(4)" alt="La Fonte">
+<img src="immagini/quadri/oil06.jpg" onclick="apri(5)" alt="Luce">
+<img src="immagini/quadri/oil07.jpg" onclick="apri(6)" alt="D.">
+<img src="immagini/quadri/oil08.jpg" onclick="apri(7)" alt="Pesce Angelo">
+<img src="immagini/quadri/oil09.jpg" onclick="apri(8)" alt="Senza Titolo">
+<img src="immagini/quadri/oil10.jpg" onclick="apri(9)" alt="Autoritratto nel Rosso">
+<img src="immagini/quadri/oil11.jpg" onclick="apri(10)" alt="Fenice">
+</div>
+
+<div class="navigazione">
+    <a href="galleria-en.html" class="torna-indietro">← Go back</a>
+    <div></div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="chiudi()">
+    <span class="nav close" onclick="event.stopPropagation();chiudi()">×</span>
+    <div class="lightbox-container">
+        <span class="nav prev" onclick="cambia(-1);event.stopPropagation()">‹</span>
+        <div class="lightbox-img-container">
+            <img id="imgGrande" alt="">
+        </div>
+        <span class="nav next" onclick="cambia(1);event.stopPropagation()">›</span>
+        <div class="info-lightbox" id="infoLightbox"></div>
+    </div>
+</div>
+
+<script>
+const immagini = [
+    "immagini/quadri/oil01.jpg","immagini/quadri/oil02.jpg","immagini/quadri/oil03.jpg",
+    "immagini/quadri/oil04.jpg","immagini/quadri/oil05.jpg","immagini/quadri/oil06.jpg",
+    "immagini/quadri/oil07.jpg","immagini/quadri/oil08.jpg","immagini/quadri/oil09.jpg",
+    "immagini/quadri/oil10.jpg","immagini/quadri/oil11.jpg"
+];
+const titoli = [
+    "Respiro", "Senza Titolo", "Virus", "Tommy", "La Fonte", "Luce", 
+    "D.", "Pesce Angelo", "Senza Titolo", "Autoritratto nel Rosso", "Fenice"
+];
+const info = [
+    "Oil on canvas, 65×65 cm", "Oil on canvas, 90×70 cm", "Oil on canvas, 70×70 cm",
+    "Oil on canvas, 70×70 cm", "Oil on canvas, 50×70 cm", "Oil on canvas, 80×100 cm",
+    "Oil on canvas, 51×80 cm", "Oil on canvas, 50×70 cm", "Oil on canvas, 50×70 cm",
+    "Oil on cut canvas, 50×70 cm", "Oil on canvas, 50×70 cm"
+];
+let indice = 0;
+
+function apri(i) {
+    indice = i;
+    document.getElementById("imgGrande").src = immagini[indice];
+    const infoDiv = document.getElementById("infoLightbox");
+    infoDiv.innerHTML = `<div class="titolo-lightbox">${titoli[indice]}</div><div class="info-dettaglio">${info[indice]}</div>`;
+    document.getElementById("lightbox").classList.add("active");
+}
+function chiudi() { document.getElementById("lightbox").classList.remove("active"); }
+function cambia(n) { 
+    indice += n; 
+    if(indice < 0) indice = immagini.length -1; 
+    if(indice >= immagini.length) indice = 0; 
+    document.getElementById("imgGrande").src = immagini[indice];
+    document.getElementById("infoLightbox").innerHTML = `<div class="titolo-lightbox">${titoli[indice]}</div><div class="info-dettaglio">${info[indice]}</div>`;
+}
+
+document.addEventListener("keydown", function(e){ 
+    if(e.key === "Escape") chiudi(); 
+    if(e.key === "ArrowRight") cambia(1); 
+    if(e.key === "ArrowLeft") cambia(-1); 
+});
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => { 
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault(); 
+});
+</script>
+
+<footer style="text-align: center; padding: 80px 20px 60px; font-size: 14px; color: #666; letter-spacing: 1px; user-select: none; pointer-events: none; margin-top: 60px;">
+    © 2026 Demis Lupi - All rights reserved | Images protected by copyright
+</footer>
+</body>
+</html>
